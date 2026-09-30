@@ -1,0 +1,17 @@
+todos:
+  - id: secure-gallery-login
+    content: Repair the static login flow so protected gallery content is only rendered after valid authentication.
+    scope: S
+    files:
+      - index.html
+      - app.js
+      - style.css
+      - tests/app.test.js
+      - CHANGELOG.md
+      - README.md
+    acceptance:
+      - Initial page load does not include rendered gallery images in the protected container.
+      - Valid credentials reveal the gallery and clear any error state.
+      - Invalid credentials keep the gallery hidden and show an error message without hinting a bypass.
+    verify: node --test tests/app.test.js
+    status: done
