@@ -1,0 +1,34 @@
+baseline:
+  baseline_tests_ran: true
+  baseline_defects_present: true
+  pre_existing_repository_issues:
+    - "No README, package.json, or configured automated test runner existed at baseline."
+    - "Global repository test suite could not run because no baseline test command was defined."
+slice_verification:
+  - id: secure-gallery-login
+    verify_command: "node --test tests/app.test.js"
+    result: passed
+    tests:
+      total: 3
+      passed: 3
+      failed: 0
+layers:
+  unit_tests:
+    ran: false
+    passed: false
+    blocked_reason: "No baseline test runner or repository-wide test suite was configured; added targeted Node tests for the requested login repair instead."
+  api_tests:
+    ran: false
+    passed: false
+    blocked_reason: "Not applicable: static frontend-only app with no backend API."
+  integration_tests:
+    ran: false
+    passed: false
+    blocked_reason: "Not applicable: single-slice static app."
+  e2e_tests:
+    ran: false
+    passed: false
+    blocked_reason: "No browser E2E harness was configured in the repository; targeted regression tests were added for the requested fix."
+build:
+  build_passed: false
+  blocked_reason: "Not applicable: plain static HTML/CSS/JavaScript app without a build step."
